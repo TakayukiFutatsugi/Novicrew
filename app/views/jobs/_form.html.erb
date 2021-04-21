@@ -1,0 +1,82 @@
+<%= form_with(model: job) do |form| %>
+  <% if job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+        <% job.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+    <div class="field mb-3">
+      <%= form.label :タイトル %>
+      <%= form.text_field :title, class:"col-sm-10" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :雇用形態 %>
+      <%= form.select :status, Job.statuses.keys, {}, class:"col-sm-6" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :想定給与 %>
+      <%= form.text_field :salary, class:"col-sm-10" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :福利厚生・待遇・休日休暇 %>
+      <%= form.text_area :benefitProgram, class:"col-sm-6" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= form.label :研修・育成制度 %>
+      <%= form.text_area :training, class:"col-sm-6" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= form.label :主に使用する言語・フレームワーク %>
+      <%= form.text_field :language, class:"col-sm-10" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= form.label :求める人物像 %>
+      <%= form.text_area :characteristics, class:"col-sm-6" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :歓迎スキル %>
+      <%= form.text_area :skillset, class:"col-sm-6" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :選考プロセス %>
+      <%= form.text_area :selectionProcess, class:"col-sm-6" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :勤務開始予定日 %>
+      <%= form.date_select(:startingDate, start_year: Date.today.year, end_year: Date.today.year+2) %>
+    </div>
+      
+    <div class="field mb-3">
+      <%= form.label :勤務地 %>
+      <%= form.select :workplace, Job.workplaces.keys, {}, class:"col-sm-6" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :アクセス %>
+      <%= form.text_field :access, class:"col-sm-10" %>
+    </div>
+    
+    <div class="field mb-3">
+      <%= form.label :仕事詳細 %>
+      <%= form.text_area :description, class:"col-sm-10" %>
+    </div>
+  
+  <div class="actions">
+    <%= form.submit "投稿" %>
+  </div>
+<% end %>

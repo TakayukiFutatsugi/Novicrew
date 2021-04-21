@@ -1,0 +1,44 @@
+<h2 class="mb-5"><%= @client.name %> ホーム</h2>
+
+<div class="d-flex justify-content-between mb-3">
+  <h3><%= @client.name %> 求人一覧</h3>
+  <%= link_to '新規投稿', new_job_path %>
+</div>
+<% if client_signed_in? %>
+  <% @jobs.each do |job| %>
+    <% if job.client == current_client %>
+      <div class="card mb-3">
+        <h3 class="card-header"><%= job.title %></h3>
+        <div class="card-body">
+          <h4 class="card-title"><%= job.client.name %></h4>
+          <p class="card-text"><%= job.created_at.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p class="card-text"><%= job.client.name %></p>
+          <p class="card-text"><%= job.description %></p>
+          <%= link_to '詳細', job %>
+          <%= link_to '編集', edit_job_path(job) %>
+          <%= link_to '削除', job, method: :delete, data: { confirm: 'Are you sure?' } %>    
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <div class="d-flex justify-content-between mb-3">
+    <h3><%= @client.name %> 記事一覧</h3>
+    <%= link_to '新規投稿', new_article_path %>
+  </div>
+  <% @articles.each do |article| %>
+    <% if article.client == current_client %>
+      <div class="card mb-3">
+        <div class="card-header"><%= article.client.name %></div>
+        <div class="card-body">
+          <h3 class="card-title"><%= article.title %></h3>
+          <p class="card-text"><%= article.created_at.strftime('%Y年%m月%d日') %></p>
+          <p class="card-text"><%= article.content %></p>
+          <%= link_to '詳細', article %>
+          <%= link_to '編集', edit_article_path(article) %>
+          <%= link_to '削除', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>  

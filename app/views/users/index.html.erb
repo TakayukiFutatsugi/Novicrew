@@ -1,0 +1,9 @@
+<h2 class="mb-5">求職者 一覧</h2>
+<% @users.each do |user| %>
+  <div class="border-bottom">
+    <p><%= user.familyName + user.lastName %>(<%= user.familyNameDetail + user.lastNameDetail %>)</p>
+    <p><%= user.gender %></p>
+    <p><%=user.birthdate %></p>
+    <%= link_to '詳細', user_path(user) %>
+  </div>  
+<% end %>

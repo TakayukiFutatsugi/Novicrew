@@ -1,0 +1,67 @@
+<h2 class="mb-5"><%= @client.name %> 詳細</h2>
+
+<table class="table mb-3">
+  <tbody>
+    <tr>
+      <th scope="row">ホームページ</th>
+      <td><%= @client.homepage %></td>
+    </tr>
+    <tr>
+      <th scope="row">業界</th>
+      <td><%= @client.industry %></td>
+    </tr>
+    <tr>
+      <th scope="row">事業内容</th>
+      <td><%= @client.business %></td>
+    </tr>
+    <tr>
+      <th scope="row">従業員数</th>
+      <td><%= @client.staff %></td>
+    </tr>
+    <tr>
+      <th scope="row">エンジニア人数</th>
+      <td><%= @client.engineer %></td>
+    </tr>
+    <tr>
+      <th scope="row">本社所在地</th>
+      <td><%= @client.address %></td>
+    </tr>
+    <tr>
+      <th scope="row">採用担当者</th>
+      <td><%= @client.representativeName %></td>
+    </tr>   
+    <tr>
+      <th scope="row">会社紹介</th>
+      <td><%= @client.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="mb-3"><%= @client.name %> 求人一覧</h3>
+<% @jobs.each do |job| %>
+  <div class="card mb-3">
+    <h3 class="card-header"><%= job.title %></h3>
+    <div class="card-body">
+      <h4 class="card-title"><%= job.client.name %></h4>
+      <p class="card-text"><%= job.created_at.strftime('%Y年%m月%d日%H時%M分') %></p>
+      <p class="card-text"><%= job.client.name %></p>
+      <p class="card-text"><%= job.description %></p>
+      <%= link_to '詳細', job %>
+      <%= link_to "応募", job_entries_path(job), method: :post, data: { confirm: "登録データが企業へ送られます。応募してよろしいですか?" } %> 
+    </div>
+  </div>  
+<% end %>
+
+<h3 class="mb-3"><%= @client.name %> 記事一覧</h3>
+<% @articles.each do |article| %>
+  <div class="card">
+    <div class="card-header"><%= article.client.name %></div>
+      <div class="card-body">
+        <h3 class="card-title"><%= article.title %></h3>
+        <p class="card-text"><%= article.created_at.strftime('%Y年%m月%d日') %></p>
+        <p class="card-text"><%= article.content %></p>
+        <%= link_to '詳細', article_path(article) %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="media">
+  <div class="media-body">
+    <div class="d-flex justify-content-between mb-5">
+      <h2><%= @article.title %></h2>
+      <p><%= @article.created_at.strftime('%Y年%m月%d日') %></p>
+    </div>
+    
+    <p>ジャンル：<%= @article.genre %></p>
+    <p>企業：<%= @article.client.name %></p>
+    <p><%= @article.content %></p>
+  </div>
+</div>
+<% if client_signed_in? && @article.client == current_client %>
+  <%= link_to '編集', edit_article_path(@article) %> |
+<% end %>
+<%= link_to '戻る', articles_path %>

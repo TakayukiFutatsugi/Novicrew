@@ -1,0 +1,54 @@
+<% if user_signed_in? %>
+  <h2 class="mb-5"><%= @client.name %></h2>
+  <div>
+    <div class="chat-field mb-5">
+      <% @messages.each do |m| %>
+        <% if m.is_user %><!-- メッセージがUserによるものだったら -->
+          <div class="right-message mb-3"><!-- メッセージを右に寄せる -->
+            <div>
+              <%= m.content %>
+            </div>  
+          </div>
+        <% else %><!-- メッセージがclientによるものだったら -->
+          <div class="left-message mb-3"><!-- メッセージを左に寄せる -->
+            <div>
+              <%= m.content %>
+            </div>  
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if client_signed_in?%>
+  <h2 class="mb-5"><%= @user.familyName %></h2>
+  <div>
+    <div class="chat-field mb-5">
+      <% @messages.each do |m| %>
+        <% if m.is_user %><!-- メッセージがUserによるものだったら -->
+          <div class="left-message mb-3"><!-- メッセージを左に寄せる -->
+            <div>
+              <%= m.content %>
+            </div>
+          </div>
+        <% else %><!-- メッセージがclientによるものだったら -->
+          <div class="right-message mb-3"><!-- メッセージを右に寄せる -->
+            <div>
+              <%= m.content %>
+            </div>  
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div>
+  <%= form_for [@room, @message] do |f| %>
+    <div>
+      <%= f.text_area :content, class:"col-sm-10" %>
+      <%= f.submit "送信" %>
+    </div>
+  <% end %>
+</div>

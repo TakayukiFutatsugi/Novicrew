@@ -1,0 +1,10 @@
+<h2 class="mb-5">登録企業 一覧</h2>
+
+<% @clients.each do |client| %>
+  <div class="border-bottom">
+    <p><%= client.name %></p>
+    <p><%= client.industry %></p>
+    <p><%= client.introduction %></p>
+    <%= link_to '詳細', client_path(client) %>
+  </div>
+<% end %>

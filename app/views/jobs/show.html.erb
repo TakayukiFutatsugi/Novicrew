@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between mb-5">
+  <h2><%= @job.title %></h2>
+  <%= @job.created_at.strftime('%Y年%m月%d日') %>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= @job.title %></th>
+      <th scope="col"><%= @job.client.name %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">雇用形態</th>
+      <td><%= @job.status %></td>
+    </tr>
+    <tr>
+      <th scope="row">想定給与</th>
+      <td><%= @job.salary %></td>
+    </tr>
+    <tr>
+      <th scope="row">福利厚生・待遇・休日休暇</th>
+      <td><%= @job.benefitProgram %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">研修・育成制度</th>
+      <td><%= @job.training %></td>
+    </tr>
+    <tr>
+      <th scope="row">主に使用する言語・フレームワーク</th>
+      <td><%= @job.language %></td>
+    </tr>
+    <tr>
+      <th scope="row">求める人物像</th>
+      <td><%= @job.characteristics %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">歓迎スキル</th>
+      <td><%= @job.skillset %></td>
+    </tr>
+    <tr>
+      <th scope="row">選考プロセス</th>
+      <td><%= @job.selectionProcess %></td>
+    </tr>
+    <tr>
+      <th scope="row">勤務開始予定日</th>
+      <td><%= @job.startingDate %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">勤務地</th>
+      <td><%= @job.workplace %></td>
+    </tr>
+    <tr>
+      <th scope="row">アクセス</th>
+      <td><%= @job.access %></td>
+    </tr>
+    <tr>
+      <th scope="row">仕事詳細</th>
+      <td><%= @job.description %></td>
+    </tr>    
+  </tbody>
+</table>
+<% if client_signed_in? && @job.client == current_client %>
+  <%= link_to '編集', edit_job_path(@job) %> |
+<% elsif user_signed_in? %>
+  <%= link_to "応募", job_entries_path(@job), method: :post,data: { confirm: "登録データが企業へ送られます。応募してよろしいですか?" } %>
+<% end %>
+<%= link_to '戻る', jobs_path %>

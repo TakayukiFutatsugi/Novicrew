@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between mb-5">
+  <h2>求人 一覧</h2>
+  <% if client_signed_in? %>
+    <%= link_to '新規投稿', new_job_path %>
+  <% end %>  
+</div>
+
+<% @jobs.each do |job| %>
+  <div class="card mb-3">
+    <h3 class="card-header"><%= job.title %></h3>
+    <div class="card-body">
+      <h4 class="card-title"><%= job.client.name %></h4>
+      <p class="card-text"><%= job.created_at.strftime('%Y年%m月%d日%H時%M分') %></p>
+      <p class="card-text"><%= job.client.name %></p>
+      <p class="card-text"><%= job.description %></p>
+      <% if client_signed_in? && job.client == current_client %>
+        <%= link_to '編集', edit_job_path(job) %>
+        <%= link_to '削除', job, method: :delete, data: { confirm: 'Are you sure?' } %>    
+      <% elsif user_signed_in? %>
+        <%= link_to "応募", job_entries_path(job), method: :post, data: { confirm: "登録データが企業へ送られます。応募してよろしいですか?" } %>
+      <% end %>
+        <%= link_to '詳細', job %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,123 @@
+<h2 class="mb-5"><%= @user.familyName + @user.lastName %> 詳細</h2>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">氏名</th>
+      <td><%= @user.familyName + @user.lastName %></td>
+    </tr>
+    <tr>
+      <th scope="row">フリガナ</th>
+      <td><%= @user.familyNameDetail + @user.lastNameDetail %></td>
+    </tr>
+    <tr>
+      <th scope="row">性別</th>
+      <td><%= @user.gender %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">生年月日</th>
+      <td><%= @user.birthdate %></td>
+    </tr>
+    <tr>
+      <th scope="row">居住地</th>
+      <td><%= @user.prefecture %></td>
+    </tr>
+    <tr>
+      <th scope="row">高校卒業年月</th>
+      <td><%= @user.firstEducation %></td>
+    </tr>
+    <tr>
+      <th scope="row">卒業高校</th>
+      <td><%= @user.firstEducationDetail %></td>
+    </tr>
+    <tr>
+      <th scope="row">大学・短大・専門学校等卒業年月</th>
+      <td><%= @user.secondEducation %></td>
+    </tr>
+    <tr>
+      <th scope="row">卒業学校名</th>
+      <td><%= @user.secondEducationDetail %></td>
+    </tr>
+    <tr>
+      <th scope="row">その他（大学院等）卒業年月</th>
+      <td><%= @user.thirdEducation %></td>
+    </tr>
+    <tr>
+      <th scope="row">卒業学校・教育機関名</th>
+      <td><%= @user.thirdEducationDetail %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">職歴1</th>
+      <td><%= @user.firstCareer %></td>
+    </tr>
+    <tr>
+      <th scope="row">会社名・役職</th>
+      <td><%= @user.firstCareerDetail %></td>
+    </tr>
+    <tr>
+      <th scope="row">職歴2</th>
+      <td><%= @user.secondCareer %></td>
+    </tr>
+    <tr>
+      <th scope="row">会社名・役職</th>
+      <td><%= @user.secondCareerDetail %></td>
+    </tr>
+    <tr>
+      <th scope="row">職歴3</th>
+      <td><%= @user.thirdCareer %></td>
+    </tr>
+    <tr>
+      <th scope="row">会社名・役職</th>
+      <td><%= @user.thirdCareerDetail %></td>
+    </tr>    
+
+    <tr>
+      <th scope="row">資格</th>
+      <td><%= @user.certification %></td>
+    </tr>
+    <tr>
+      <th scope="row">エンジニア志望理由</th>
+      <td><%= @user.reason %></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">学習期間</th>
+      <td><%= @user.duration %></td>
+    </tr>
+    <tr>
+      <th scope="row">学習・情報収集に使用しているサイト・書籍</th>
+      <td><%= @user.resource %></td>
+    </tr>
+    <tr>
+      <th scope="row">学習した言語・フレームワーク</th>
+      <td><%= @user.language %></td>
+    </tr>
+    <tr>
+      <th scope="row">ポートフォリオ</th>
+      <td><%= @user.portfolio %></td>
+    </tr>
+    <tr>
+      <th scope="row">希望勤務地</th>
+      <td><%= @user.workplace %></td>
+    </tr>
+    <tr>
+      <th scope="row">希望給与</th>
+      <td><%= @user.salary %></td>
+    </tr>
+    <tr>
+      <th scope="row">勤務開始可能日</th>
+      <td><%= @user.startingDate %></td>
+    </tr>
+    <tr>
+      <th scope="row">自己紹介</th>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= form_for Room.new do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.submit "チャット" %>
+<% end %>

@@ -1,0 +1,44 @@
+<h2 class="mb-5">企業 新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "clients/shared/error_messages", resource: resource %>
+  
+  <div class="field mb-3">
+    <%= f.label :会社名 %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= f.label :採用担当者名 %>
+    <%= f.text_field :representativeName %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <div class="field mb-3">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field mb-3">
+        <%= f.label :パスワード確認 %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+
+<%= render "clients/shared/links" %>
