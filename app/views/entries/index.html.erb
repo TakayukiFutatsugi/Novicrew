@@ -1,19 +1,20 @@
 <h2 class="mb-5">応募者 一覧</h2>
 
 <% @entries.each do |entry| %>
-<div class="border-bottom">
-  <% if entry.job.client == current_client %>
-    <p><%= entry.user.familyName + entry.user.lastName %></p>
-    <p><%= entry.user.created_at.strftime('%Y年%m月%d日%H時%M分') %></p>
-    <p><%= entry.job.title %>への応募</p>
-
-    <%= link_to '詳細', job_entry_path(entry.job, entry.user) %>
-    <div class="mb-3">
-      <%= form_for Room.new do |f| %>
-        <%= f.hidden_field :user_id, :value => entry.user.id %>
-        <%= f.submit "チャット" %>
-      <% end %>
-    </div>
-</div>    
-  <% end %>
+  <div class="border-bottom mb-3">
+    <% if entry.job.client == current_client %>
+      <div class="d-flex justify-content-between">
+        <h3><%= entry.user.familyName + entry.user.lastName %></h3>
+        <p><%= entry.user.created_at.strftime('%Y年%m月%d日%H時%M分') %></p>
+      </div>
+      <h4><%= entry.job.title %>への応募</h4>
+      <div class="d-flex justify-content-between mb-3">
+        <%= link_to '詳細', job_entry_path(entry.job, entry.user), class:"btn", style:"background-color: #f7efa2;" %>
+        <%= form_for Room.new do |f| %>
+          <%= f.hidden_field :user_id, :value => entry.user.id %>
+          <%= f.submit "チャット" %>
+        <% end %>
+      </div>  
+    <% end %>
+  </div>
 <% end %>

@@ -2,9 +2,11 @@
 
 <% @clients.each do |client| %>
   <div class="border-bottom">
-    <p><%= client.name %></p>
+    <div class="d-flex justify-content-between">
+      <h3><%= client.name %></h3>
+      <%= link_to '詳細', client_path(client), class:"btn", style:"background-color: #f7efa2;" %>
+    </div>  
     <p><%= client.industry %></p>
-    <p><%= client.introduction %></p>
-    <%= link_to '詳細', client_path(client) %>
+    <p><%= truncate(client.introduction) %></p>
   </div>
 <% end %>

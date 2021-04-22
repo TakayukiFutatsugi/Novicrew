@@ -2,14 +2,12 @@
 <% @scouts.each do |scout| %>
   <% if scout.user == current_user %>
     <div class="border-bottom mb-3">
-      <div>  
+      <div class="d-flex justify-content-between">
         <h3><%= scout.client.name %></h3>
-        <p><%= scout.created_at.strftime('%Y年%m月%d日%H時%M分') %>にスカウトメッセージが届きました</p>
-      </div>
-      <div>
-        <h4><%= scout.message %></h4>
-        <%= link_to "詳細", user_scout_path(scout.user, scout.client) %>
-      </div>
-    </div>  
+        <%= link_to "詳細", user_scout_path(scout.user, scout.client), class:"btn", style:"background-color: #f7efa2;" %>
+      </div>  
+      <p><%= scout.created_at.strftime('%Y年%m月%d日%H時%M分') %>にスカウトメッセージが届きました</p>
+      <h4><%= truncate(scout.message) %></h4>
+    </div>
   <% end %>
 <% end %>

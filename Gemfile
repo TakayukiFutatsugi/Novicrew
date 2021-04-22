@@ -16,10 +16,13 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'activeadmin'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'rails-i18n', '~> 6.0.0'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

@@ -12,71 +12,71 @@
   <% end %>
   
     <div class="field mb-3">
-      <%= form.label :タイトル %>
-      <%= form.text_field :title, class:"col-sm-10" %>
+      <%= form.label :タイトル %><br>
+      <%= form.text_field :title, class:"col-8" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :雇用形態 %>
-      <%= form.select :status, Job.statuses.keys, {}, class:"col-sm-6" %>
+      <%= form.label :雇用形態 %><br>
+      <%= form.select :status, Job.statuses.keys, {}, class:"col-2" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :想定給与 %>
-      <%= form.text_field :salary, class:"col-sm-10" %>
+      <%= form.label :想定給与 %><br>
+      <%= form.text_field :salary, class:"col-8" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :福利厚生・待遇・休日休暇 %>
-      <%= form.text_area :benefitProgram, class:"col-sm-6" %>
+      <%= form.label :福利厚生・待遇・休日休暇 %><br>
+      <%= form.text_area :benefitProgram, class:"col-8", rows:"10" %>
     </div>
 
     <div class="field mb-3">
-      <%= form.label :研修・育成制度 %>
-      <%= form.text_area :training, class:"col-sm-6" %>
+      <%= form.label :研修・育成制度 %><br>
+      <%= form.text_area :training, class:"col-8", rows:"10" %>
     </div>
 
     <div class="field mb-3">
-      <%= form.label :主に使用する言語・フレームワーク %>
-      <%= form.text_field :language, class:"col-sm-10" %>
+      <%= form.label :主に使用する言語・フレームワーク %><br>
+      <%= form.text_field :language, class:"col-8" %>
     </div>
 
     <div class="field mb-3">
-      <%= form.label :求める人物像 %>
-      <%= form.text_area :characteristics, class:"col-sm-6" %>
+      <%= form.label :求める人物像 %><br>
+      <%= form.text_area :characteristics, class:"col-8", rows:"10" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :歓迎スキル %>
-      <%= form.text_area :skillset, class:"col-sm-6" %>
+      <%= form.label :歓迎スキル %><br>
+      <%= form.text_area :skillset, class:"col-8", rows:"10" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :選考プロセス %>
-      <%= form.text_area :selectionProcess, class:"col-sm-6" %>
+      <%= form.label :選考プロセス %><br>
+      <%= form.text_area :selectionProcess, class:"col-8", rows:"10" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :勤務開始予定日 %>
+      <%= form.label :勤務開始予定日 %><br>
       <%= form.date_select(:startingDate, start_year: Date.today.year, end_year: Date.today.year+2) %>
     </div>
       
     <div class="field mb-3">
-      <%= form.label :勤務地 %>
-      <%= form.select :workplace, Job.workplaces.keys, {}, class:"col-sm-6" %>
+      <%= form.label :勤務地 %><br>
+      <%= form.select :workplace, Job.workplaces.keys, {}, class:"col-2" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :アクセス %>
-      <%= form.text_field :access, class:"col-sm-10" %>
+      <%= form.label :アクセス %><br>
+      <%= form.text_field :access, class:"col-8" %>
     </div>
     
     <div class="field mb-3">
-      <%= form.label :仕事詳細 %>
-      <%= form.text_area :description, class:"col-sm-10" %>
+      <%= form.label :仕事詳細 %><br>
+      <%= form.text_area :description, class:"col-8", rows:"20" %>
     </div>
   
-  <div class="actions">
+  <div class="actions d-flex justify-content-end">
     <%= form.submit "投稿" %>
   </div>
 <% end %>

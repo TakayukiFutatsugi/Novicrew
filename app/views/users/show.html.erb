@@ -1,130 +1,131 @@
-<h2 class="mb-5"><%= @user.familyName + @user.lastName %> 詳細</h2>
-
-<table class="table mb-3">
-  <tbody>
-    <tr>
-      <th scope="row">氏名</th>
-      <td><%= @user.familyName + @user.lastName %></td>
-    </tr>
-    <tr>
-      <th scope="row">フリガナ</th>
-      <td><%= @user.familyNameDetail + @user.lastNameDetail %></td>
-    </tr>
-    <tr>
-      <th scope="row">性別</th>
-      <td><%= @user.gender %></td>
-    </tr>
-    
-    <tr>
-      <th scope="row">生年月日</th>
-      <td><%= @user.birthdate %></td>
-    </tr>
-    <tr>
-      <th scope="row">居住地</th>
-      <td><%= @user.prefecture %></td>
-    </tr>
-    <tr>
-      <th scope="row">高校卒業年月</th>
-      <td><%= @user.firstEducation %></td>
-    </tr>
-    <tr>
-      <th scope="row">卒業高校</th>
-      <td><%= @user.firstEducationDetail %></td>
-    </tr>
-    <tr>
-      <th scope="row">大学・短大・専門学校等卒業年月</th>
-      <td><%= @user.secondEducation %></td>
-    </tr>
-    <tr>
-      <th scope="row">卒業学校名</th>
-      <td><%= @user.secondEducationDetail %></td>
-    </tr>
-    <tr>
-      <th scope="row">その他（大学院等）卒業年月</th>
-      <td><%= @user.thirdEducation %></td>
-    </tr>
-    <tr>
-      <th scope="row">卒業学校・教育機関名</th>
-      <td><%= @user.thirdEducationDetail %></td>
-    </tr>
-    
-    <tr>
-      <th scope="row">職歴1</th>
-      <td><%= @user.firstCareer %></td>
-    </tr>
-    <tr>
-      <th scope="row">会社名・役職</th>
-      <td><%= @user.firstCareerDetail %></td>
-    </tr>
-    <tr>
-      <th scope="row">職歴2</th>
-      <td><%= @user.secondCareer %></td>
-    </tr>
-    <tr>
-      <th scope="row">会社名・役職</th>
-      <td><%= @user.secondCareerDetail %></td>
-    </tr>
-    <tr>
-      <th scope="row">職歴3</th>
-      <td><%= @user.thirdCareer %></td>
-    </tr>
-    <tr>
-      <th scope="row">会社名・役職</th>
-      <td><%= @user.thirdCareerDetail %></td>
-    </tr>    
-
-    <tr>
-      <th scope="row">資格</th>
-      <td><%= @user.certification %></td>
-    </tr>
-    <tr>
-      <th scope="row">エンジニア志望理由</th>
-      <td><%= @user.reason %></td>
-    </tr>
-    
-    <tr>
-      <th scope="row">学習期間</th>
-      <td><%= @user.duration %></td>
-    </tr>
-    <tr>
-      <th scope="row">学習・情報収集に使用しているサイト・書籍</th>
-      <td><%= @user.resource %></td>
-    </tr>
-    <tr>
-      <th scope="row">学習した言語・フレームワーク</th>
-      <td><%= @user.language %></td>
-    </tr>
-    <tr>
-      <th scope="row">ポートフォリオ</th>
-      <td><%= @user.portfolio %></td>
-    </tr>
-    <tr>
-      <th scope="row">希望勤務地</th>
-      <td><%= @user.workplace %></td>
-    </tr>
-    <tr>
-      <th scope="row">希望給与</th>
-      <td><%= @user.salary %></td>
-    </tr>
-    <tr>
-      <th scope="row">勤務開始可能日</th>
-      <td><%= @user.startingDate %></td>
-    </tr>
-    <tr>
-      <th scope="row">自己紹介</th>
-      <td><%= @user.introduction %></td>
-    </tr>
-  </tbody>
-</table>
-
-<% if client_signed_in? %>
-  <h3>スカウトメッセージを送る</h3>
-  <p>*必ずしも求職者様から応募があるわけではございません。</p>
-  <%= form_with model:@scout, url:user_scouts_path(@user), local: true do |f| %>
-    <div>
-      <h4><%= f.label :メッセージ入力 %></h4>
-      <%= f.text_area :message, class:"col-sm-10" %>
-      <%= f.submit "スカウト送信", data: { confirm: "送信してよろしいですか?" } %>
+<div class="card mb-3">
+  <div class="card-header">
+    <div class="d-flex justify-content-between">
+      <h2><%= @user.familyName + @user.lastName %></h2>
     </div>
-  <% end %>
-<% end %>
+  </div> 
+  <div class="card-body">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-4">氏名</div>
+        <div class="col"><%= @user.familyName + @user.lastName %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">フリガナ</div>
+        <div class="col"><%= @user.familyNameDetail + @user.lastNameDetail %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">性別</div>
+        <div class="col"><%= @user.gender %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">生年月日</div>
+        <div class="col"><%= @user.birthdate %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">居住地</div>
+        <div class="col"><%= @user.prefecture %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">高校卒業年月</div>
+        <div class="col"><%= @user.firstEducation %></div>
+      </div>     
+      <div class="row mb-3">
+        <div class="col-4">卒業高校</div>
+        <div class="col"><%= @user.firstEducationDetail %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">大学・短大・専門学校等卒業年月</div>
+        <div class="col"><%= @user.secondEducation %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">卒業学校名</div>
+        <div class="col"><%= @user.secondEducationDetail %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">その他（大学院等）卒業年月</div>
+        <div class="col"><%= @user.thirdEducation %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">卒業学校・教育機関名</div>
+        <div class="col"><%= @user.thirdEducationDetail %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">職歴1</div>
+        <div class="col"><%= @user.firstCareer %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">会社名・役職</div>
+        <div class="col"><%= @user.firstCareerDetail %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">職歴2</div>
+        <div class="col"><%= @user.secondCareer %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">会社名・役職</div>
+        <div class="col"><%= @user.secondCareerDetail %></div>
+      </div>  
+      <div class="row mb-3">
+        <div class="col-4">職歴3</div>
+        <div class="col"><%= @user.thirdCareer %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">会社名・役職</div>
+        <div class="col"><%= @user.thirdCareerDetail %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">資格</div>
+        <div class="col"><%= @user.certification %></div>
+      </div>  
+      <div class="row mb-3">
+        <div class="col-4">エンジニア志望理由</div>
+        <div class="col"><%= @user.reason %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">学習期間</div>
+        <div class="col"><%= @user.duration %></div>
+      </div>  
+      <div class="row mb-3">
+        <div class="col-4">学習・情報収集に使用しているサイト・書籍</div>
+        <div class="col"><%= @user.resource %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">学習した言語・フレームワーク</div>
+        <div class="col"><%= @user.language %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">ポートフォリオ</div>
+        <div class="col"><%= @user.portfolio %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">希望勤務地</div>
+        <div class="col"><%= @user.workplace %></div>
+      </div>  
+      <div class="row mb-3">
+        <div class="col-4">希望給与</div>
+        <div class="col"><%= @user.salary %></div>        
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">勤務開始可能日</div>
+        <div class="col"><%= @user.startingDate %></div>
+      </div>  
+      <div class="row mb-3">
+        <div class="col-4">自己紹介</div>
+        <div class="col"><%= @user.introduction %></div>
+      </div>
+
+      <% if client_signed_in? %>
+        <h3>スカウトメッセージを送る</h3>
+        <p>*必ずしも求職者様から応募があるわけではございません。</p>
+        <%= form_with model:@scout, url:user_scouts_path(@user), local: true do |f| %>
+          <div>
+            <h4><%= f.label :メッセージ入力 %></h4>
+            <%= f.text_area :message, class:"col-sm-10", rows:"10" %><br>
+            <%= f.submit "スカウト送信", data: { confirm: "送信してよろしいですか?" } %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>   
+</div>  

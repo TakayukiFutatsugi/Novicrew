@@ -2,13 +2,13 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field mb-3">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email %>
+    <%= f.label :メールアドレス %><br>
+    <%= f.email_field :email, class:"col-8" %>
   </div>
 
   <div class="field mb-3">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password %>
+    <%= f.label :パスワード %><br>
+    <%= f.password_field :password, class:"col-8" %>
   </div>
 
   <% if devise_mapping.rememberable? %>

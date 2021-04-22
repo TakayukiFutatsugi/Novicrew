@@ -12,13 +12,13 @@
   <% end %>
   
   <div class="field mb-3">
-    <%= form.label :タイトル %><br>
-    <%= form.text_field :title, class:"col-sm-10" %>
+    <%= form.label :タイトル%><br>
+    <%= form.text_field :title, class:"col-8" %>
   </div>
   
   <div class="field mb-3">
     <%= form.label :ジャンル %><br>
-    <%= form.select :genre, Article.genres.keys, {}, class:"col-sm-6" %>
+    <%= form.select :genre, Article.genres.keys, {}, class:"col-2" %>
   </div>
 
   <div class="field mb-3">
@@ -26,7 +26,7 @@
     <%= form.rich_text_area :content %>
   </div>
 
-  <div class="actions">
+  <div class="actions d-flex justify-content-end">
     <%= form.submit "投稿" %>
   </div>
 <% end %>

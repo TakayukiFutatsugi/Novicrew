@@ -1,24 +1,30 @@
 <div class="d-flex justify-content-between mb-5">
   <h2>記事 一覧</h2>
   <% if client_signed_in? %>
-    <%= link_to '新規投稿', new_article_path %>
+    <%= link_to '新規投稿', new_article_path, class:"btn", style:"background-color: #f7efa2;" %>
   <% end %>  
 </div>
 <% @articles.each do |article| %>
   <div class="card mb-3">
     <div class="card-header">
-      <%= article.client.name %>
+      <div class="d-flex justify-content-between">
+        <h3><%= article.title %></h3>
+        <div><%= article.created_at.strftime('%Y年%m月%d日') %></div>
+      </div>
     </div>
     <div class="card-body">
-      <h3 class="card-title"><%= article.title %></h3>
-      <p class="card-text"><%= article.created_at.strftime('%Y年%m月%d日') %></p>
+      <div class="d-flex justify-content-between">
+        <h3 class="card-title"><%= article.client.name %></h3>
+        <%= article.genre %>
+      </div>
       <p class="card-text"><%= article.content %></p>
-
-      <%= link_to '詳細', article %>
-      <% if client_signed_in? && article.client == current_client %>
-        <%= link_to '編集', edit_article_path(article) %>
-        <%= link_to '削除', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>  
+      <div class="d-flex justify-content-end">
+        <%= link_to '詳細', article, class:"btn", style:"background-color: #f7efa2;" %>
+        <% if client_signed_in? && article.client == current_client %>
+          <%= link_to '編集', edit_article_path(article), class:"btn", style:"background-color: #f7efa2;" %>
+          <%= link_to '削除', article, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn", style:"background-color: #f7efa2;" %>
+        <% end %>  
+      </div>
     </div>
   </div>
 <% end %>

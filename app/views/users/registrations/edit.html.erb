@@ -6,13 +6,13 @@
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :姓 %>
+        <%= f.label :姓 %><br>
         <%= f.text_field :familyName %>
       </div>
     </div>  
     <div class="col">
       <div class="field">
-        <%= f.label :名 %>
+        <%= f.label :名 %><br>
         <%= f.text_field :lastName %>
       </div>
     </div>
@@ -21,13 +21,13 @@
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :セイ %>
+        <%= f.label :セイ %><br>
         <%= f.text_field :familyNameDetail %>
       </div>
     </div>
     <div class="col">
       <div class="field">
-        <%= f.label :メイ %>
+        <%= f.label :メイ %><br>
         <%= f.text_field :lastNameDetail %>
       </div>
     </div>
@@ -36,19 +36,19 @@
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :性別 %>
+        <%= f.label :性別 %><br>
         <%= f.select :gender, User.genders.keys, {} %>
       </div>
     </div>  
     <div class="col">
       <div class="field">
-        <%= f.label :生年月日 %>
+        <%= f.label :生年月日 %><br>
         <%= f.date_select(:birthdate, start_year: 1970, end_year: Date.today.year) %>
       </div>
     </div>  
     <div class="col">
       <div class="field">
-        <%= f.label :居住地 %>
+        <%= f.label :居住地 %><br>
         <%= f.select :prefecture, User.prefectures.keys, {} %>
       </div>
     </div>
@@ -57,13 +57,13 @@
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :高校卒業年月日 %>
+        <%= f.label :高校卒業年月日 %><br>
         <%= f.text_field :firstEducation %>
       </div>
     </div>
     <div class="col">
       <div class="field">
-        <%= f.label :卒業高校名 %>
+        <%= f.label :卒業高校名 %><br>
         <%= f.text_field :firstEducationDetail %>
       </div>
     </div>
@@ -72,13 +72,13 @@
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :大学・短大・専門学校等卒業年月日 %>
+        <%= f.label :大学・短大・専門学校等卒業年月日 %><br>
         <%= f.text_field :secondEducation %>
       </div>
     </div>
     <div class="col">
       <div class="field">
-        <%= f.label :卒業学校名 %>
+        <%= f.label :卒業学校名 %><br>
         <%= f.text_field :secondEducationDetail %>
       </div>
     </div>
@@ -87,13 +87,13 @@
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :その他（大学院等）卒業年月日 %>
+        <%= f.label :その他（大学院等）卒業年月日 %><br>
         <%= f.text_field :thirdEducation %>
       </div>
     </div>  
     <div class="col">
       <div class="field">
-        <%= f.label :卒業学校・教育機関名 %>
+        <%= f.label :卒業学校・教育機関名 %><br>
         <%= f.text_field :thirdEducationDetail %>
       </div>
     </div>
@@ -102,13 +102,13 @@
   <div class="row mb-3">
     <div class="col">  
       <div class="field">
-        <%= f.label :入社年月日・退社年月日 %>
+        <%= f.label :入社年月日・退社年月日 %><br>
         <%= f.text_field :firstCareer %>
       </div>
     </div>
     <div class="col">  
       <div class="field">
-        <%= f.label :会社名・役職 %>
+        <%= f.label :会社名・役職 %><br>
         <%= f.text_field :firstCareerDetail %>
       </div>
     </div>
@@ -117,13 +117,13 @@
   <div class="row mb-3">
     <div class="col">  
       <div class="field">
-        <%= f.label :入社年月日・退社年月日 %>
+        <%= f.label :入社年月日・退社年月日 %><br>
         <%= f.text_field :secondCareer %>
       </div>
     </div>
     <div class="col">  
       <div class="field">
-        <%= f.label :会社名・役職 %>
+        <%= f.label :会社名・役職 %><br>
         <%= f.text_field :secondCareerDetail %>
       </div>
     </div>
@@ -132,77 +132,77 @@
   <div class="row mb-3">
     <div class="col">  
       <div class="field">
-        <%= f.label :入社年月日・退社年月日 %>
+        <%= f.label :入社年月日・退社年月日 %><br>
         <%= f.text_field :thirdCareer %>
       </div>
     </div>
     <div class="col">  
       <div class="field">
-        <%= f.label :会社名・役職 %>
+        <%= f.label :会社名・役職 %><br>
         <%= f.text_field :thirdCareerDetail %>
       </div>
     </div>
   </div>
   
   <div class="field mb-3">
-    <%= f.label :資格 %>
-    <%= f.text_field :certification, class:"col-sm-6" %>
+    <%= f.label :資格 %><br>
+    <%= f.text_field :certification, class:"col-8" %>
   </div>
     
   <div class="field mb-3">
-    <%= f.label :エンジニア志望理由 %>
-    <%= f.text_area :reason, class:"col-sm-6" %>
+    <%= f.label :エンジニア志望理由 %><br>
+    <%= f.text_field :reason, class:"col-8" %>
   </div>    
   
   <div class="field mb-3">
-    <%= f.label :学習期間 %>
-    <%= f.text_field :duration, class:"col-sm-6" %>
+    <%= f.label :学習期間 %><br>
+    <%= f.text_field :duration, class:"col-8" %>
   </div>    
     
   <div class="field mb-3">
-    <%= f.label :学習・情報収集に使用しているサイト・書籍 %>
-    <%= f.text_field :resource, class:"col-sm-6" %>
+    <%= f.label :学習・情報収集に使用しているサイト・書籍 %><br>
+    <%= f.text_field :resource, class:"col-8" %>
   </div>    
     
   <div class="field mb-3">
-    <%= f.label :学習した言語・フレームワーク %>
-    <%= f.text_field :language, class:"col-sm-6" %>
+    <%= f.label :学習した言語・フレームワーク %><br>
+    <%= f.text_field :language, class:"col-8" %>
   </div>        
     
   <div class="field mb-3">
-    <%= f.label :ポートフォリオ %>
-    <%= f.text_field :portfolio, class:"col-sm-6" %>
+    <%= f.label :ポートフォリオ %><br>
+    <%= f.text_field :portfolio, class:"col-8" %>
   </div>        
   
   <div class="row mb-3">
     <div class="col">
       <div class="field">
-        <%= f.label :希望勤務地 %>
+        <%= f.label :希望勤務地 %><br>
         <%= f.select :workplace, User.workplaces.keys, {}  %>
       </div>
     </div> 
     <div class="col">
       <div class="field">
-        <%= f.label :希望給与 %>
+        <%= f.label :希望給与 %><br>
         <%= f.text_field :salary %>
       </div>
     </div>       
     <div class="col">
       <div class="field">
-        <%= f.label :勤務開始可能日 %>
+        <%= f.label :勤務開始可能日 %><br>
         <%= f.date_select(:startingDate, start_year: Date.today.year, end_year: Date.today.year+2)  %>
       </div>
     </div>
   </div>          
   
   <div class="field mb-3">
-    <%= f.label :自己紹介 %>
-    <%= f.text_area :introduction, class:"col-sm-6" %>
+    <%= f.label :自己紹介 %><br>
+    <%= f.text_area :introduction, class:"col-8", rows:"20" %>
   </div>        
   
   <div class="field mb-3">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email %>
+    <%= f.label :メールアドレス %><br>
+    <%= f.email_field :email, class:"col-8" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -213,7 +213,7 @@
     <div class="col">
       <div class="field">
         <%= f.label :パスワード%> <i>(leave blank if you don't want to change it)</i>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password" %><br>
         <% if @minimum_password_length %>
           <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
@@ -221,15 +221,15 @@
     </div>
     <div class="col">
       <div class="field">
-        <%= f.label :パスワード確認 %>
+        <%= f.label :パスワード確認 %><br>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
     </div>
   </div>
 
   <div class="field mb-3">
-    <%= f.label :現在のパスワード %> <i>(we need your current password to confirm your changes)</i>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :現在のパスワード %> <i>(we need your current password to confirm your changes)</i><br>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"col-8" %>
   </div>
 
   <div class="actions">

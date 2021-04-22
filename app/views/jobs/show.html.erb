@@ -1,71 +1,120 @@
-<div class="d-flex justify-content-between mb-5">
-  <h2><%= @job.title %></h2>
-  <%= @job.created_at.strftime('%Y年%m月%d日') %>
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex justify-content-between">
+      <h2><%= @job.title %></h2>
+      <div><%= @job.created_at.strftime('%Y年%m月%d日') %></div>
+    </div>
+  </div> 
+  
+  <div class="card-body">
+    <h3 class="card-title"><%= @job.client.name %></h3>
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-4">
+          雇用形態
+        </div>
+        <div class="col">
+          <%= @job.status %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          想定給与
+        </div>
+        <div class="col">
+          <%= @job.salary %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          福利厚生・待遇・休日休暇
+        </div>
+        <div class="col">
+          <%= @job.benefitProgram %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          研修・育成制度
+        </div>
+        <div class="col">
+          <%= @job.training %>
+        </div>
+      </div>  
+      <div class="row mb-3">
+        <div class="col-4">
+          主に使用する言語・フレームワーク
+        </div>
+        <div class="col">
+          <%= @job.language %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          求める人物像
+        </div>
+        <div class="col">
+          <%= @job.characteristics %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          歓迎スキル
+        </div>
+        <div class="col">
+          <%= @job.skillset %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          選考プロセス
+        </div>
+        <div class="col">
+          <%= @job.selectionProcess %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          勤務開始予定日
+        </div>
+        <div class="col">
+          <%= @job.startingDate %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          勤務地
+        </div>
+        <div class="col">
+          <%= @job.workplace %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          アクセス
+        </div>
+        <div class="col">
+          <%= @job.access %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          仕事詳細
+        </div>
+        <div class="col">
+          <%= @job.description %>
+        </div>
+      </div>  
+    </div>
+    <div class="d-flex justify-content-end">
+      <% if client_signed_in? && @job.client == current_client %>
+        <%= link_to '編集', edit_job_path(@job), class:"btn", style:"background-color: #f7efa2;" %>
+        <%= link_to '削除', @job, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn", style:"background-color: #f7efa2;" %>    
+      <% elsif user_signed_in? %>
+        <%= link_to "応募", job_entries_path(@job), method: :post,data: { confirm: "登録データが企業へ送られます。応募してよろしいですか?" }, class:"btn", style:"background-color: #f7efa2;" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"><%= @job.title %></th>
-      <th scope="col"><%= @job.client.name %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">雇用形態</th>
-      <td><%= @job.status %></td>
-    </tr>
-    <tr>
-      <th scope="row">想定給与</th>
-      <td><%= @job.salary %></td>
-    </tr>
-    <tr>
-      <th scope="row">福利厚生・待遇・休日休暇</th>
-      <td><%= @job.benefitProgram %></td>
-    </tr>
-    
-    <tr>
-      <th scope="row">研修・育成制度</th>
-      <td><%= @job.training %></td>
-    </tr>
-    <tr>
-      <th scope="row">主に使用する言語・フレームワーク</th>
-      <td><%= @job.language %></td>
-    </tr>
-    <tr>
-      <th scope="row">求める人物像</th>
-      <td><%= @job.characteristics %></td>
-    </tr>
-    
-    <tr>
-      <th scope="row">歓迎スキル</th>
-      <td><%= @job.skillset %></td>
-    </tr>
-    <tr>
-      <th scope="row">選考プロセス</th>
-      <td><%= @job.selectionProcess %></td>
-    </tr>
-    <tr>
-      <th scope="row">勤務開始予定日</th>
-      <td><%= @job.startingDate %></td>
-    </tr>
-    
-    <tr>
-      <th scope="row">勤務地</th>
-      <td><%= @job.workplace %></td>
-    </tr>
-    <tr>
-      <th scope="row">アクセス</th>
-      <td><%= @job.access %></td>
-    </tr>
-    <tr>
-      <th scope="row">仕事詳細</th>
-      <td><%= @job.description %></td>
-    </tr>    
-  </tbody>
-</table>
-<% if client_signed_in? && @job.client == current_client %>
-  <%= link_to '編集', edit_job_path(@job) %> |
-<% elsif user_signed_in? %>
-  <%= link_to "応募", job_entries_path(@job), method: :post,data: { confirm: "登録データが企業へ送られます。応募してよろしいですか?" } %>
-<% end %>
+
 <%= link_to '戻る', jobs_path %>

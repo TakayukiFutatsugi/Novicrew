@@ -3,17 +3,21 @@
 <% if user_signed_in? %>
   <% @rooms.each do |room| %>
     <div class="border-bottom">
-      <p><%= room.client.name %></p>
+      <div class="d-flex justify-content-between mb-3">
+        <h3><%= room.client.name %></h3>
+        <%= link_to "チャット", room_path(room), class:"btn", style:"background-color: #f7efa2;" %>
+      </div>
       <p><%= room.created_at.strftime('%Y年%m月%d日') %>にチャットを開始しました</p>
-      <%= link_to "チャット", room_path(room) %>
     </div>  
   <% end %>
 <% elsif client_signed_in? %>
   <% @rooms.each do |room| %>
     <div class="border-bottom">
-      <p><%= room.user.familyName + room.user.lastName %></p>
+      <div class="d-flex justify-content-between mb-3">
+        <h3><%= room.user.familyName + room.user.lastName %></h3>
+        <%= link_to "チャット", room_path(room), class:"btn", style:"background-color: #f7efa2;" %>
+      </div>  
       <p><%= room.created_at.strftime('%Y年%m月%d日') %>にチャットを開始しました</p>
-      <%= link_to "チャット", room_path(room) %>
     </div>
   <% end %>
 <% end %>
